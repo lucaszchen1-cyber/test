@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Configs - ProSettings Pessoal</title>
+    <style>
+        /* --- ESTILO GERAL (CSS) --- */
+        :root {
+            --bg-color: #121212;
+            --sidebar-color: #1e1e1e;
+            --accent-color: #fca311; /* Cor de destaque (Laranja ProSettings) */
+            --text-color: #e0e0e0;
+            --table-header: #2d2d2d;
+            --border-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- BARRA LATERAL (MENU DE JOGOS) --- */
+        .sidebar {
+            width: 250px;
+            background-color: var(--sidebar-color);
+            padding: 20px;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .game-btn {
+            background: none;
+            border: none;
+            color: #888;
+            padding: 15px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .game-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .game-btn.active {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        .main-content {
+            margin-left: 250px;
+            padding: 40px;
+            width: 100%;
+        }
+
+        h1 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: var(--accent-color);
+        }
+
+        /* --- TABELAS DE CONFIGURAÇÃO --- */
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--sidebar-color);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .settings-table th, .settings-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .settings-table th {
+            background-color: var(--table-header);
+            color: #fff;
+            font-weight: 700;
+            width: 50%;
+        }
+
+        .settings-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .settings-table tr:hover {
+            background-color: #252525;
+        }
+
+        /* --- EQUIPAMENTOS (PERIPHERALS) --- */
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gear-card {
+            background-color: var(--sidebar-color);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .gear-card h3 {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .gear-card p {
+            font-weight: 700;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        /* --- OCULTAR/MOSTRAR SEÇÕES --- */
+        .game-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .game-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividade para celular */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA LATERAL -->
+    <nav class="sidebar">
+        <div class="logo">My<span>Settings</span></div>
+        <button class="game-btn active" onclick="openGame('cs2')">Counter-Strike 2</button>
+        <button class="game-btn" onclick="openGame('valorant')">Valorant</button>
+        <button class="game-btn" onclick="openGame('cod')">Call of Duty</button>
+        <button class="game-btn" onclick="openGame('setup')">Meu PC / Setup</button>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+
+        <!-- CONFIGURAÇÃO CS2 -->
+        <div id="cs2" class="game-section active">
+            <h1>Configurações CS2</h1>
+
+            <!-- Mouse -->
+            <h2>Mouse Settings</h2>
+            <table class="settings-table">
+                <tr><th>DPI</th><td>800</td></tr>
+                <tr><th>Sensitivity</th><td>1.20</td></tr>
+                <tr><th>eDPI</th><td>960</td></tr>
+                <tr><th>Zoom Sensitivity</th><td>1.00</td></tr>
+                <tr><th>Hz (Polling Rate)</th><td>1000 Hz</td></tr>
+                <tr><th>Windows Sensitivity</th><td>6/11</td></tr>
+            </table>
+
+            <!-- Video -->
+            <h2>Video Settings</h2>
+            <table class="settings-table">
+                <tr><th>Resolution</th><td>1280x960</td></tr>
+                <tr><th>Aspect Ratio</th><td>4:3 Stretched</td></tr>
+                <tr><th>Scaling Mode</th><td>Fullscreen</td></tr>
+                <tr><th>Refresh Rate</th><td>240 Hz</td></tr>
+            </table>
+
+            <!-- Crosshair -->
+            <h2>Crosshair Code</h2>
+            <div style="background: #2d2d2d; padding: 15px; border-radius: 5px; font-family: monospace; border: 1px solid #444;">
+                CSGO-2x5p-Example-Code-Paste-Here
+            </div>
+        </div>
+
+        <!-- CONFIGURAÇÃO VALORANT -->
+        <div id="valorant" class="game-section">
+            <h1>Configurações Valorant</h1>
+
+            <h2>Mouse Settings</h2>
+            <table class="settings-table">
+                <tr><th>DPI</th><td>800</td></tr>
+                <tr><th>Sensitivity</th><td>0.35</td></tr>
+                <tr><th>eDPI</th><td>280</td></tr>
+                <tr><th>Hz</th><td>1000 Hz</td></tr>
+            </table>
+
+            <h2>Keybinds</h2>
+            <table class="settings-table">
+                <tr><th>Walk</th><td>L-Shift</td></tr>
+                <tr><th>Crouch</th><td>L-Ctrl</td></tr>
+                <tr><th>Jump</th><td>Wheel Down</td></tr>
+                <tr><th>Ability 1</th><td>C</td></tr>
+                <tr><th>Ability 2</th><td>Q</td></tr>
+                <tr><th>Ability 3</th><td>E</td></tr>
+                <tr><th>Ultimate</th><td>X</td></tr>
+            </table>
+        </div>
+
+        <!-- CONFIGURAÇÃO COD -->
+        <div id="cod" class="game-section">
+            <h1>Call of Duty / Warzone</h1>
+            <p style="color: #888;">Adicione suas configurações aqui editando o arquivo HTML.</p>
+        </div>
+
+        <!-- SETUP / PERIFÉRICOS -->
+        <div id="setup" class="game-section">
+            <h1>Meu Setup & Periféricos</h1>
+            
+            <div class="gear-grid">
+                <div class="gear-card">
+                    <h3>Monitor</h3>
+                    <p>Zowie XL2546K</p>
+                </div>
+                <div class="gear-card">
+                    <h3>Mouse</h3>
+                    <p>Logitech G Pro X Superlight</p>
+                </div>
+                <div class="gear-card">
+                    <h3>Teclado</h3>
+                    <p>Wooting 60HE</p>
+                </div>
+                <div class="gear-card">
+                    <h3>Headset</h3>
+                    <p>HyperX Cloud II</p>
+                </div>
+                <div class="gear-card">
+                    <h3>Mousepad</h3>
+                    <p>SteelSeries QcK Heavy</p>
+                </div>
+                <div class="gear-card">
+                    <h3>GPU</h3>
+                    <p>NVIDIA RTX 4070</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Lógica simples para trocar as abas
+        function openGame(gameId) {
+            // 1. Esconde todas as seções
+            const sections = document.querySelectorAll('.game-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Remove a classe 'active' de todos os botões
+            const buttons = document.querySelectorAll('.game-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // 3. Mostra a seção clicada
+            document.getElementById(gameId).classList.add('active');
+
+            // 4. Adiciona a classe 'active' ao botão clicado (para ficar laranja)
+            // Encontra o botão que chamou a função comparando o onclick ou apenas visualmente
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
